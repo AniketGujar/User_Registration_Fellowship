@@ -5,10 +5,10 @@ public class UserRegisration {
 	Scanner Scan = new Scanner(System.in);
     
 	public void firstName() {
-		System.out.println("Enter First Name:(First Letter Capital and minimum 3 characters)");
-		String fName = Scan.nextLine();
+	    System.out.println("Enter First Name:(First Letter Capital and minimum 3 characters)");
+	    String fName = Scan.nextLine();
 		
-		Pattern fNamePat = Pattern.compile("^[A-Z]+[A-Za-z]{2,12}$");
+	    Pattern fNamePat = Pattern.compile("^[A-Z]+[A-Za-z]{2,12}$");
 	    Matcher fNameMatch = fNamePat.matcher(fName);
 	    boolean fNameverification = fNameMatch.find();
 	    
@@ -44,9 +44,9 @@ public class UserRegisration {
 		
 		Pattern emailPat = Pattern.compile("^([a-z]+[0-9a-z-!#$%+^&*_.]*){3,15}@[a-z]{3,8}[.]*([a-z]{2,4})*.[a-z]{2,4}");
 	    Matcher emailMatch = emailPat.matcher(email);
-	    boolean emailverification = emailMatch.find();
+	    boolean emailVerification = emailMatch.find();
 	    
-	    if (emailverification==false) {
+	    if (emailVerification==false) {
 	    	System.out.println("Invalid Email Id!!");
 	    	email();
 	    }
@@ -55,10 +55,28 @@ public class UserRegisration {
 	    }
 	}
 	
+	public void mobileNumber() {
+		System.out.println("Enter Mobile Number:(Country Code<space>Mobile Number)");
+		String number = Scan.nextLine();
+		
+		Pattern numberPattern = Pattern.compile("^([+]*[1-9]{1}[-]*)[-0-9]{1,4}[\" \"]([1-9]?[0-9]{9})$");
+	    Matcher numberMatch = numberPattern.matcher(number);
+	    boolean numberVerification = numberMatch.find();
+	    
+	    if (numberVerification==false) {
+	    	System.out.println("Invalid Mobile Number!!");
+	    	email();
+	    }
+	    else {
+	    	System.out.println("Valid Mobile Number: "+ number);
+	    }
+	}
+	
 	public static void main(String[] args) {
 		UserRegisration user = new UserRegisration();
 		user.firstName();
 		user.lastName();
 		user.email();
+		user.mobileNumber();
 	}
 }
