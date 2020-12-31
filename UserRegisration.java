@@ -42,7 +42,7 @@ public class UserRegisration {
 	    System.out.println("Enter Email Id:");
 	    String email = Scan.nextLine();
 		
-	    Pattern emailPat = Pattern.compile("^([a-z]+[0-9a-z-!#$%+^&*_.]*){3,15}@[a-z]{3,8}[.]*([a-z]{2,4})*.[a-z]{2,4}");
+	    Pattern emailPat = Pattern.compile("^([a-z]+[0-9a-z-!#$%+^&*_.]*){3,15}@[a-z0-9]{1,8}[.]*([a-z]{2,4})*.[a-z]{2,4}");
 	    Matcher emailMatch = emailPat.matcher(email);
 	    boolean emailVerification = emailMatch.find();
 	    
